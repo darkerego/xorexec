@@ -12,6 +12,10 @@ from itertools import cycle
 from timeit import default_timer as timer
 from types import ModuleType
 from typing import Any
+import sys
+
+# Do not leave pyc files lying around
+sys.dont_write_bytecode = True
 
 # Define constant variables
 HASH_STR = '5411ba21c470e12d49f351a2d240e43618032950'
@@ -66,9 +70,9 @@ class CodeBrute:
 
     def decrypt_and_execute(self, cipher_text: str, _pin: str):
         """
-        Xor decrypt and execute code
+        Xor decrypt and execute code: This is one way to do it. It's not necessarily the best way.
         :param cipher_text: xor encrypted module
-        :param _pin: 4 digit pin (key)
+        :param _pin: 4-digit pin (key)
         :return:
         """
         code = self.b64_xor_crypt(cipher_text, _pin, 'decrypt')
